@@ -1,5 +1,6 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');    //获取CSS单独打包插件
+
 
 module.exports = {
     entry : {
@@ -12,6 +13,7 @@ module.exports = {
         path : path.resolve(__dirname, 'dist')
     },
     plugins: [
+        //单独打包CSS文件
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
             chunkFilename: '[id].css'
@@ -19,6 +21,7 @@ module.exports = {
     ],
     module: {
         rules: [
+            //使用CSS-loader加载CSS文件，并使用MiniCssExtractPlugin插件打包到单独文件内
             {
                 test: /\.css$/,
                 use: [
@@ -34,9 +37,10 @@ module.exports = {
         ]
     },
     optimization: {
+        //分离共同模块
         splitChunks: {
             chunks: 'all',
-            name: 'common'
+            name: 'base'
         }
     },
     mode : 'production'

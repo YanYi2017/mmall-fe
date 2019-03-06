@@ -23,6 +23,9 @@ module.exports = {
         filename : 'js/[name].js',
         path : path.resolve(__dirname, 'dist')
     },
+    devServer: {
+        contentBase: './dist'
+    },
     plugins: [
         //单独打包CSS文件
         new MiniCssExtractPlugin({

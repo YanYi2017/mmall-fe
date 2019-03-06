@@ -47,6 +47,18 @@ module.exports = {
                     },
                     'css-loader'
                 ]
+            },
+            //使用file-loader加载图片和字体
+            {
+                test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'resource/[name].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },

@@ -1,6 +1,17 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');    //获取CSS单独打包插件
+const path                  = require('path');
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin');   //获取CSS单独打包插件
+const HTMLWebpackPlugin     = require('html-webpack-plugin');       //获取自动创建HTML页面插件
 
+//定义一个返回HTMLWebpackPlugin参数对象的方法
+const getHtmlConfig = function (name) {
+    return {
+        template: './src/view/' + name + '.html',
+        filename: 'view/' + name + '.html',
+        inject: true,
+        hash: true,
+        chunks: ['base', 'common', name]
+    };
+};
 
 module.exports = {
     entry : {
@@ -17,7 +28,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
             chunkFilename: '[id].css'
-        })
+        }),
+        //自动创建HTML模板
+        new HTMLWebpackPlugin(getHtmlConfig('index')),
+        new HTMLWebpackPlugin(getHtmlConfig('login'))
     ],
     module: {
         rules: [

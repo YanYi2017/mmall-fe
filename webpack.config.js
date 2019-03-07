@@ -5,11 +5,11 @@ const HTMLWebpackPlugin     = require('html-webpack-plugin');       //获取自�
 //定义一个返回HTMLWebpackPlugin参数对象的方法
 const getHtmlConfig = function (name) {
     return {
-        template: './src/view/' + name + '.html',
-        filename: 'view/' + name + '.html',
-        inject: true,
-        hash: true,
-        chunks: ['base', 'common', name]
+        template    : './src/view/' + name + '.html',
+        filename    : 'view/' + name + '.html',
+        inject      : true,
+        hash        : true,
+        chunks      : ['base', 'common', name]
     };
 };
 
@@ -20,8 +20,8 @@ module.exports = {
         'login' : './src/page/login/index.js',
     },
     output: {
-        filename : 'js/[name].js',
-        path : path.resolve(__dirname, 'dist')
+        filename    : 'js/[name].js',
+        path        : path.resolve(__dirname, 'dist')
     },
     devServer: {
         contentBase: './dist'
@@ -41,10 +41,10 @@ module.exports = {
             //使用CSS-loader加载CSS文件，并使用MiniCssExtractPlugin插件打包到单独文件内
             {
                 test: /\.css$/,
-                use: [
+                use : [
                     {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
+                        loader  : MiniCssExtractPlugin.loader,
+                        options : {
                             publicPath: '../'
                         }
                     },
@@ -54,10 +54,10 @@ module.exports = {
             //使用file-loader加载图片和字体
             {
                 test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
-                use: [
+                use : [
                     {
-                        loader: 'file-loader',
-                        options: {
+                        loader  : 'file-loader',
+                        options : {
                             name: 'resource/[name].[ext]'
                         }
                     }
@@ -68,8 +68,8 @@ module.exports = {
     optimization: {
         //分离共同模块
         splitChunks: {
-            chunks: 'all',
-            name: 'base'
+            chunks  : 'all',
+            name    : 'base'
         }
     },
     mode : 'production'

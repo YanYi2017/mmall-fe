@@ -1,5 +1,9 @@
 'use strict';
 
+var config = {
+    serverHost: ''  //方便以后改写服务器地址
+};
+
 var _mm = {
     //网络请求
     request: function (param) {
@@ -27,6 +31,10 @@ var _mm = {
                 typeof param.error === 'function' && param.error(err.statusText);
             }
         });
+    },
+    //获取服务器端地址
+    getServerURL: function (path) {
+        return config.serverHost + path;
     },
     //同一登陆处理
     doLogin: function () {

@@ -65,6 +65,15 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        alias: {
+            Image   : path.resolve(__dirname, 'src/image'),
+            Page    : path.resolve(__dirname, 'src/page'),
+            Service : path.resolve(__dirname, 'src/service'),
+            Util    : path.resolve(__dirname, 'src/util'),
+            View    : path.resolve(__dirname, 'src/view')
+        }
+    },
     optimization: {
         //分离共同模块
         splitChunks: {

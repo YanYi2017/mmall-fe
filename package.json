@@ -29,6 +29,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "hogan": "^1.0.2",
     "lodash": "^4.17.11"
   }
 }

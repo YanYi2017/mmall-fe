@@ -1,4 +1,5 @@
 'use strict';
+var Hogan = require('hogan');
 
 var config = {
     serverHost: ''  //方便以后改写服务器地址
@@ -41,6 +42,12 @@ var _mm = {
         var reg     = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
         var result  = window.location.search.substr(1).match(reg);
         return result ? decodeURIComponent(result[2]) : null;
+    },
+    //渲染HTML模板
+    renderHTML: function (htmlTemplate, data) {
+        var template = Hogan.compile(htmlTemplate);
+        var result   = template.render(data);
+        return result;
     },
     //统一登陆处理
     doLogin: function () {

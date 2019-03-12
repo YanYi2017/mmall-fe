@@ -14,3 +14,6 @@ var data = {
 var template = '<div>{{screenName}}</div>';
 
 console.log(_mm.renderHTML(template, data));
+
+_mm.successTips();
+_mm.errorTips();

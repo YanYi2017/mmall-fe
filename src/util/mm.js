@@ -49,6 +49,14 @@ var _mm = {
         var result   = template.render(data);
         return result;
     },
+    //成功提示
+    successTips: function (msg) {
+        alert(msg || "操作成功！");
+    },
+    //失败提示
+    errorTips: function (msg) {
+        alert(msg || "出错了！");
+    },
     //统一登陆处理
     doLogin: function () {
         window.location.href = './login.html?redirct=' + encodeURIComponent(window.location.href);   //使用encodeURIComponent完全编码，防止特殊字符截断

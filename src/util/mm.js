@@ -57,6 +57,23 @@ var _mm = {
     errorTips: function (msg) {
         alert(msg || "出错了！");
     },
+    //验证功能，支持非空、手机号和邮箱判断
+    validate: function (value, type) {
+        var value = $.trim(value);
+        var emailRegExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
+        //非空验证
+        if ('required' === type) {
+            return !!value;
+        }
+        //手机号验证
+        if ('phone' === type) {
+            return /^1\d{10}$/.test(value);
+        }
+        //邮箱验证
+        if ('email' === type) {
+            return emailRegExp.test(value);
+        }
+    },
     //统一登陆处理
     doLogin: function () {
         window.location.href = './login.html?redirct=' + encodeURIComponent(window.location.href);   //使用encodeURIComponent完全编码，防止特殊字符截断

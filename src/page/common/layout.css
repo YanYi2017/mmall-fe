@@ -28,3 +28,22 @@ input[type='checkbox'] {
     position : relative;
     overflow : hidden;      /*清除浮动*/
 }
+
+/*全局通用样式*/
+/*隐藏类*/
+.hide {
+    display: none;
+}
+/*链接样式*/
+.link {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+.link:hover {
+    color: #e80012;
+}
+.link-text {
+    color: #999;
+    text-decoration: none;
+}

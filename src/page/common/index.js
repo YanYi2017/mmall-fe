@@ -1,5 +1,5 @@
 'use strict';
 
-require('./layout.css');
+import './layout.css';
 
 console.log('I am global');

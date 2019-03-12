@@ -36,7 +36,13 @@ var _mm = {
     getServerURL: function (path) {
         return config.serverHost + path;
     },
-    //同一登陆处理
+    //获取URL参数
+    getURLParam: function (name) {
+        var reg     = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+        var result  = window.location.search.substr(1).match(reg);
+        return result ? decodeURIComponent(result[2]) : null;
+    },
+    //统一登陆处理
     doLogin: function () {
         window.location.href = './login.html?redirct=' + encodeURIComponent(window.location.href);   //使用encodeURIComponent完全编码，防止特殊字符截断
     }

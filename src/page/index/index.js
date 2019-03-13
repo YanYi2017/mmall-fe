@@ -1,5 +1,5 @@
 'use strict';
 
 import './index.css';
-import 'Page/common/nav-simple/index.js';
+import 'Page/common/nav/index.js';
 import _mm from 'Util/mm.js';

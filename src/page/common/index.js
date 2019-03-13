@@ -1,5 +1,4 @@
 'use strict';
 
 import './layout.css';
-
-console.log('I am global');
+import 'Node_modules/_@fortawesome_fontawesome-free@5.7.2@@fortawesome/fontawesome-free/css/all.css';

@@ -21,7 +21,7 @@ input[type='checkbox'] {
     cursor: pointer;
 }
 
-/*定宽布局*/
+/* 定宽布局 */
 .w {
     width    : 1080px;
     margin   : 0 auto;
@@ -29,12 +29,12 @@ input[type='checkbox'] {
     overflow : hidden;      /*清除浮动*/
 }
 
-/*全局通用样式*/
-/*隐藏类*/
+/* 全局通用样式 */
+/* 隐藏类 */
 .hide {
     display: none;
 }
-/*链接样式*/
+/* 链接样式 */
 .link {
     color: #999;
     text-decoration: none;
@@ -47,7 +47,7 @@ input[type='checkbox'] {
     color: #999;
     text-decoration: none;
 }
-/*按钮样式*/
+/* 按钮样式 */
 .btn {
     display: inline-block;
     padding: 0 20px;
@@ -68,4 +68,15 @@ input[type='checkbox'] {
     line-height: 25px;
     font-size: 12px;
     padding: 0 10px;
+}
+/* 加载样式 */
+.loading {
+    margin: 0 auto;
+    display: block;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    opacity: 0.7;
+    background: url(../../image/icon/loading.gif) no-repeat;
 }

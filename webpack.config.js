@@ -14,15 +14,20 @@ const getHtmlConfig = function (name) {
 };
 
 module.exports = {
+    mode : 'production',
     entry : {
         'common': './src/page/common/index.js',
         'index' : './src/page/index/index.js',
         'login' : './src/page/login/index.js',
     },
-    output: {
-        filename    : 'js/[name].js',
-        path        : path.resolve(__dirname, 'dist')
+    optimization: {
+        //分离共同模块
+        splitChunks: {
+            chunks  : 'all',
+            name    : 'base'
+        }
     },
+    devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist'
     },
@@ -75,12 +80,8 @@ module.exports = {
             View            : path.resolve(__dirname, 'src/view')
         }
     },
-    optimization: {
-        //分离共同模块
-        splitChunks: {
-            chunks  : 'all',
-            name    : 'base'
-        }
-    },
-    mode : 'production'
+    output: {
+        filename    : 'js/[name].js',
+        path        : path.resolve(__dirname, 'dist')
+    }
 };

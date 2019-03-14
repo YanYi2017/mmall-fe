@@ -67,6 +67,15 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            //使用html-loader加载.sting文件
+            {
+                test: /\.string$/,
+                use : [
+                    {
+                        loader  : 'html-loader'
+                    }
+                ]
             }
         ]
     },

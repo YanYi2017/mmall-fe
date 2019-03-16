@@ -3,8 +3,9 @@ const MiniCssExtractPlugin  = require('mini-css-extract-plugin');   //获取CSS�
 const HTMLWebpackPlugin     = require('html-webpack-plugin');       //获取自动创建HTML页面插件
 
 //定义一个返回HTMLWebpackPlugin参数对象的方法
-const getHtmlConfig = function (name) {
+const getHtmlConfig = function (name, _title) {
     return {
+        title       : _title,
         template    : './src/view/' + name + '.html',
         filename    : 'view/' + name + '.html',
         inject      : true,
@@ -19,6 +20,7 @@ module.exports = {
         'common': './src/page/common/index.js',
         'index' : './src/page/index/index.js',
         'login' : './src/page/login/index.js',
+        'result': './src/page/result/index.js'
     },
     optimization: {
         //分离共同模块
@@ -38,8 +40,9 @@ module.exports = {
             chunkFilename: '[id].css'
         }),
         //自动创建HTML模板
-        new HTMLWebpackPlugin(getHtmlConfig('index')),
-        new HTMLWebpackPlugin(getHtmlConfig('login'))
+        new HTMLWebpackPlugin(getHtmlConfig('index', '首页')),
+        new HTMLWebpackPlugin(getHtmlConfig('login', '登录页')),
+        new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页'))
     ],
     module: {
         rules: [

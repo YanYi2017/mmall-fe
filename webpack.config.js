@@ -19,7 +19,7 @@ module.exports = {
     entry : {
         'common': './src/page/common/index.js',
         'index' : './src/page/index/index.js',
-        'login' : './src/page/login/index.js',
+        'user-login' : './src/page/user-login/index.js',
         'result': './src/page/result/index.js'
     },
     optimization: {
@@ -41,7 +41,7 @@ module.exports = {
         }),
         //自动创建HTML模板
         new HTMLWebpackPlugin(getHtmlConfig('index', '首页')),
-        new HTMLWebpackPlugin(getHtmlConfig('login', '登录页')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-login', '登录页')),
         new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页'))
     ],
     module: {

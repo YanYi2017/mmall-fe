@@ -3,8 +3,18 @@
 var _mm = require('Util/mm.js');
 
 var _user = {
+    //登录
+    login : function (userinfo, resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     :  _mm.getServerURL('/user/login.do'),
+            data    : userinfo,
+            success : resolve,
+            error   : reject
+        });
+    },
     //检查用户登录状态
-    checkLogin : function(resolve, reject) {
+    checkLogin : function (resolve, reject) {
         _mm.request({
             type    : 'POST',
             url     : _mm.getServerURL('/user/get_user_info.do'),

@@ -20,6 +20,7 @@ module.exports = {
         'common': './src/page/common/index.js',
         'index' : './src/page/index/index.js',
         'user-login' : './src/page/user-login/index.js',
+        'user-register' : './src/page/user-register/index.js',
         'result': './src/page/result/index.js'
     },
     optimization: {
@@ -37,11 +38,12 @@ module.exports = {
         //单独打包CSS文件
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
-            chunkFilename: '[id].css'
+            chunkFilename: 'css/[name].css'
         }),
         //自动创建HTML模板
         new HTMLWebpackPlugin(getHtmlConfig('index', '首页')),
         new HTMLWebpackPlugin(getHtmlConfig('user-login', '登录页')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-register', '注册页')),
         new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页'))
     ],
     module: {

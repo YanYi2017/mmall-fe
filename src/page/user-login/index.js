@@ -15,7 +15,7 @@ var formError = {
         $('.error-item').hide().find('.err-msg').text('');
     }
 };
-
+//页面逻辑部分
 var page = {
     //初始化
     init: function () {

@@ -4,11 +4,11 @@ var _mm = require('Util/mm.js');
 
 var _user = {
     //用户登录
-    login : function (userinfo, resolve, reject) {
+    login : function (userInfo, resolve, reject) {
         _mm.request({
             type    : 'POST',
             url     :  _mm.getServerURL('/user/login.do'),
-            data    : userinfo,
+            data    : userInfo,
             success : resolve,
             error   : reject
         });
@@ -41,6 +41,38 @@ var _user = {
         _mm.request({
             type    : 'POST',
             url     : _mm.getServerURL('/user/get_user_info.do'),
+            success : resolve,
+            error   : reject
+        });
+    },
+    //获取用户密码提示问题
+    getQuestion : function (username, resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     : _mm.getServerURL('/user/forget_get_question.do'),
+            data    : {
+                username : username
+            },
+            success : resolve,
+            error   : reject
+        });
+    },
+    //获取Token
+    getToken : function (userInfo, resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     : _mm.getServerURL('/user/forget_check_answer.do'),
+            data    : userInfo,
+            success : resolve,
+            error   : reject
+        });
+    },
+    //重置密码
+    resetPassword : function (userInfo, resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     : _mm.getServerURL('/user/forget_reset_password.do'),
+            data    : userInfo,
             success : resolve,
             error   : reject
         });

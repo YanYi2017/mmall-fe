@@ -18,11 +18,11 @@ var formError = {
 //页面逻辑部分
 var page = {
     //初始化
-    init: function () {
+    init : function () {
         this.bindEvent();
     },
     //绑定事件
-    bindEvent: function () {
+    bindEvent : function () {
         var _this = this;
         //点击登录按钮时提交
         $('#submit').click(function (e) {
@@ -36,7 +36,7 @@ var page = {
         });
     },
     //表单提交
-    submit: function () {
+    submit : function () {
         var formData = {
             username: $.trim($('#username').val()),
             password: $.trim($('#password').val())
@@ -62,7 +62,7 @@ var page = {
         }
     },
     //表单字段验证，主要进行非空验证
-    formValidate: function (formData) {
+    formValidate : function (formData) {
         var result = {
             status: false,
             msg: ''

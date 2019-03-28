@@ -20,8 +20,10 @@ module.exports = {
         'common'                : './src/page/common/index.js',
         'index'                 : './src/page/index/index.js',
         'user-login'            : './src/page/user-login/index.js',
-        'user-password-reset'   : './src/page/user-password-reset/index.js',
         'user-register'         : './src/page/user-register/index.js',
+        'user-password-reset'   : './src/page/user-password-reset/index.js',
+        'user-center'           : './src/page/user-center/index.js',
+        'user-center-update'    : './src/page/user-center-update/index.js',
         'result'                : './src/page/result/index.js'
     },
     optimization: {
@@ -43,9 +45,11 @@ module.exports = {
         }),
         //自动创建HTML模板
         new HTMLWebpackPlugin(getHtmlConfig('index', '首页')),
-        new HTMLWebpackPlugin(getHtmlConfig('user-login', '登录页')),
-        new HTMLWebpackPlugin(getHtmlConfig('user-password-reset', '密码找回页')),
-        new HTMLWebpackPlugin(getHtmlConfig('user-register', '注册页')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-register', '用户注册')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-password-reset', '用户密码找回')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-center', '用户个人中心')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-center-update', '修改用户个人信息')),
         new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页'))
     ],
     module: {

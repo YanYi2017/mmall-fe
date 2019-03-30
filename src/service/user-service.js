@@ -86,6 +86,15 @@ var _user = {
             error   : reject
         });
     },
+    updateUserInfo : function (userInfo, resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     : _mm.getServerURL('/user/update_information.do'),
+            data    : userInfo,
+            success : resolve,
+            error   : reject
+        });
+    },
     //登出
     logout : function (resolve, reject) {
         _mm.request({

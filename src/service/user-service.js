@@ -95,6 +95,16 @@ var _user = {
             error   : reject
         });
     },
+    //登录状态更新密码
+    updatePassword  : function (userInfo, resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     : _mm.getServerURL('/user/reset_password.do'),
+            data    : userInfo,
+            success : resolve,
+            error   : reject
+        });
+    },
     //登出
     logout : function (resolve, reject) {
         _mm.request({

@@ -24,6 +24,7 @@ module.exports = {
         'user-password-reset'   : './src/page/user-password-reset/index.js',
         'user-center'           : './src/page/user-center/index.js',
         'user-center-update'    : './src/page/user-center-update/index.js',
+        'user-password-update'    : './src/page/user-password-update/index.js',
         'result'                : './src/page/result/index.js'
     },
     optimization: {
@@ -50,6 +51,7 @@ module.exports = {
         new HTMLWebpackPlugin(getHtmlConfig('user-password-reset', '用户密码找回')),
         new HTMLWebpackPlugin(getHtmlConfig('user-center', '用户个人中心')),
         new HTMLWebpackPlugin(getHtmlConfig('user-center-update', '修改用户个人信息')),
+        new HTMLWebpackPlugin(getHtmlConfig('user-password-update', '修改密码')),
         new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页'))
     ],
     module: {

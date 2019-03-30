@@ -2,7 +2,7 @@
 
 require('./index.css');
 var _mm = require('Util/mm.js');
-//通用footer
+//通用header
 var header = {
     init: function () {
         this.bindEvent();

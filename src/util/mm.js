@@ -76,7 +76,7 @@ var _mm = {
     },
     //统一登陆处理
     doLogin: function () {
-        window.location.href = './user-login.html?redirct=' + encodeURIComponent(window.location.href);   //使用encodeURIComponent完全编码，防止特殊字符截断
+        window.location.href = './user-login.html?redirect=' + encodeURIComponent(window.location.href);   //使用encodeURIComponent完全编码，防止特殊字符截断
     },
     //统一跳转回主页
     goHome: function () {

@@ -77,6 +77,15 @@ var _user = {
             error   : reject
         });
     },
+    //获取用户信息
+    getUserInfo : function (resolve, reject) {
+        _mm.request({
+            type    : 'POST',
+            url     : _mm.getServerURL('/user/get_information.do'),
+            success : resolve,
+            error   : reject
+        });
+    },
     //登出
     logout : function (resolve, reject) {
         _mm.request({

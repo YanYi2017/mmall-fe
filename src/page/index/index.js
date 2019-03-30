@@ -1,11 +1,11 @@
 'use strict';
 
-import './index.css';
-import 'Page/common/header/index.js';
-import 'Page/common/nav/index.js';
-import navSide from 'Page/common/nav-side/index.js';
-import _mm from 'Util/mm.js';
+require('./index.css');
+require('Page/common/header/index.js');
+require('Page/common/nav/index.js');
+var navSide = require('Page/common/nav-side/index.js');
+var _mm = require('Util/mm.js');
 
 navSide.init({
-    name: 'about'
+    name : 'about'
 });

@@ -15,7 +15,7 @@ const getHtmlConfig = function (name, _title) {
 };
 
 module.exports = {
-    mode : 'production',
+    mode : 'development',
     entry : {
         'common'                : './src/page/common/index.js',
         'index'                 : './src/page/index/index.js',
@@ -104,6 +104,7 @@ module.exports = {
     },
     output: {
         filename    : 'js/[name].js',
-        path        : path.resolve(__dirname, 'dist')
+        path        : path.resolve(__dirname, 'dist'),
+        publicPath  : '/'
     }
 };

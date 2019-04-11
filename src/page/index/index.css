@@ -24,3 +24,41 @@
 .keywords-list .keywords-item .link:hover {
     color: #c60023;
 }
+/* 轮播图banner */
+.banner-con {
+    float: left;
+    width: 830px;
+    height: 370px;
+    background: #eee;
+}
+.banner-con .loading {
+    margin-top: 150px;
+}
+.banner-con .banner-img {
+    width: 100%;
+    height: 370px;
+}
+/* 轮播图banner的前一张和后一张按钮 */
+.banner-con .banner-arrow {
+    position: absolute;
+    top: 160px;
+    width: 30px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    background: #ccc;
+    background: rgba(0,0,0,.2);
+    cursor: pointer;
+}
+.banner-con .banner-arrow:hover {
+    background:#aaa;
+    background: rgba(0,0,0,.5);
+}
+.banner-con .banner-arrow.prev {
+    left: 0;
+}
+.banner-con .banner-arrow.next {
+    right: 0;
+}

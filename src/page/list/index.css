@@ -1,0 +1,26 @@
+/* 排序按钮 */
+.sort-con {
+    overflow: hidden;
+}
+.sort-con .sort-item {
+    position: relative;
+    float: left;
+    border: 1px solid #ccc; padding: 0 8px; margin-right: -1px;
+    height: 23px; line-height: 23px;
+    background: #fff; color: #333;
+    cursor: pointer;
+}
+.sort-con .sort-item.active {
+    border: 1px solid #c60023;
+    background: #c60023; color: #fff;
+}
+.sort-con .sort-item .fa-sort-desc {
+    position: absolute;
+    top: 6px; right: 8px;
+}
+.sort-con .sort-item.asc .fa-sort-desc {
+    opacity: 0.6;
+}
+.sort-con .sort-item.desc .fa-sort-asc {
+    opacity: 0.6;
+}

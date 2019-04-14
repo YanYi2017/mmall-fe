@@ -19,12 +19,13 @@ module.exports = {
     entry : {
         'common'                : './src/page/common/index.js',
         'index'                 : './src/page/index/index.js',
+        'list'                  : './src/page/list/index.js',
         'user-login'            : './src/page/user-login/index.js',
         'user-register'         : './src/page/user-register/index.js',
         'user-password-reset'   : './src/page/user-password-reset/index.js',
         'user-center'           : './src/page/user-center/index.js',
         'user-center-update'    : './src/page/user-center-update/index.js',
-        'user-password-update'    : './src/page/user-password-update/index.js',
+        'user-password-update'  : './src/page/user-password-update/index.js',
         'result'                : './src/page/result/index.js'
     },
     optimization: {
@@ -46,6 +47,7 @@ module.exports = {
         }),
         //自动创建HTML模板
         new HTMLWebpackPlugin(getHtmlConfig('index', '首页')),
+        new HTMLWebpackPlugin(getHtmlConfig('list', '商品列表页')),
         new HTMLWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
         new HTMLWebpackPlugin(getHtmlConfig('user-register', '用户注册')),
         new HTMLWebpackPlugin(getHtmlConfig('user-password-reset', '用户密码找回')),

@@ -1,7 +1,7 @@
 <div class="intro-wrap">
     <div class="p-img-wrap">
         <div class="main-img-con">
-            <img src="{{imageHost}}{{mainImage}}" alt="图片" class="main-img">
+            <img src="{{imageHost}}{{mainImage}}" alt="{{name}}" class="main-img">
         </div>
         <ul class="p-img-list">
             {{#subImages}}

@@ -14,8 +14,16 @@ var page = {
     },
     init : function () {
         this.onload();
+        this.bindEvent();
     },
-    bindEvent : function () {},
+    bindEvent : function () {
+        var newSrc = '';
+        //鼠标移动到缩略图上，切换预览图片
+        $(document).on('mouseenter', '.p-img-item', function () {
+            newSrc = $(this).find('.p-img').attr('src');
+            $('.main-img').attr('src', newSrc);
+        });
+    },
     onload : function () {
         //若productID不存在，则回到主页
         if (!this.data.productID) {

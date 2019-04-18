@@ -10,6 +10,15 @@ var _cart = {
             success : resolve,
             error   : reject
         });
+    },
+    //向购物车中添加商品
+    addToCart: function (info, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/add.do'),
+            data    : info,
+            success : resolve,
+            error   : reject
+        });
     }
 };
 

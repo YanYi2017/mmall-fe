@@ -6,6 +6,7 @@ require('Page/common/header/index.js');
 
 var _mm = require('Util/mm.js'),
     _product = require('Service/product-service.js'),
+    _cart = require('Service/cart-service.js'),
     templateHTML = require('./index.string');
 
 var page = {
@@ -19,6 +20,7 @@ var page = {
     bindEvent : function () {
         var newSrc  = '',
             _this   = this;
+
         //鼠标移动到缩略图上，切换预览图片
         $(document).on('mouseenter', '.p-img-item', function () {
             newSrc = $(this).find('.p-img').attr('src');
@@ -40,6 +42,17 @@ var page = {
             if (type === 'minus') {
                 $count.val(currCount > minCount ? currCount - 1 : minCount);
             }
+        });
+        //加入购物车
+        $(document).on('click', '.cart-add', function () {
+            _cart.addToCart({
+                productId : _this.data.productID,
+                count     : $('.p-count').val()
+            }, function (res) {
+                window.location.href = './result.html?type=cart-add';
+            }, function (errMsg) {
+                _mm.errorTips(errMsg);
+            });
         });
     },
     onload : function () {

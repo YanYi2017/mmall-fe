@@ -1,37 +1,27 @@
 <div class="intro-wrap">
     <div class="p-img-wrap">
         <div class="main-img-con">
-            <img src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="图片" class="main-img">
+            <img src="{{imageHost}}{{mainImage}}" alt="图片" class="main-img">
         </div>
         <ul class="p-img-list">
+            {{#subImages}}
             <li class="p-img-item">
-                <img src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="缩略图" class="p-img">
+                <img src="{{imageHost}}{{.}}" alt="{{name}}" class="p-img">
             </li>
-            <li class="p-img-item">
-                <img src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="缩略图" class="p-img">
-            </li>
-            <li class="p-img-item">
-                <img src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="缩略图" class="p-img">
-            </li>
-            <li class="p-img-item">
-                <img src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="缩略图" class="p-img">
-            </li>
-            <li class="p-img-item">
-                <img src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="缩略图" class="p-img">
-            </li>
+            {{/subImages}}
         </ul>
     </div>
     <div class="p-info-wrap">
         <div class="inner">
-            <p class="p-name">手机</p>
-            <p class="p-subtitle">手机手机</p>
+            <p class="p-name">{{name}}</p>
+            <p class="p-subtitle">{{subtitle}}</p>
             <div class="info-item p-price-con">
                 <span class="label">价格：</span>
-                <span class="p-price">￥10000</span>
+                <span class="p-price">￥{{price}}</span>
             </div>
             <div class="info-item">
                 <span class="label">库存：</span>
-                <span>2000</span>
+                <span>{{stock}}</span>
             </div>
             <div class="info-item">
                 <span class="label">数量：</span>
@@ -53,5 +43,5 @@
             <li class="tab-item">商品详情</li>
         </ul>
     </div>
-    <div class="detail-con">具体情况</div>
+    <div class="detail-con">{{{detail}}}</div>
 </div>

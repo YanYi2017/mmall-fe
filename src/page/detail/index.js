@@ -17,11 +17,29 @@ var page = {
         this.bindEvent();
     },
     bindEvent : function () {
-        var newSrc = '';
+        var newSrc  = '',
+            _this   = this;
         //鼠标移动到缩略图上，切换预览图片
         $(document).on('mouseenter', '.p-img-item', function () {
             newSrc = $(this).find('.p-img').attr('src');
             $('.main-img').attr('src', newSrc);
+        });
+        //加减数量功能
+        $(document).on('click', '.p-count-btn', function () {
+            var type = $(this).hasClass('plus') ? 'plus' : 'minus',
+                $count = $('.p-count'),
+                currCount = Number($count.val()),
+                minCount = 1,
+                maxCount = _this.data.detailInfo.stock;
+
+            //如果点击加号
+            if (type === 'plus') {
+                $count.val(currCount < maxCount ? currCount + 1 : maxCount);
+            }
+            //如果点击减号
+            if (type === 'minus') {
+                $count.val(currCount > minCount ? currCount - 1 : minCount);
+            }
         });
     },
     onload : function () {
@@ -42,6 +60,8 @@ var page = {
         _product.getProductDetail(_this.data.productID, function (res) {
             //修改数据类型
             _this.filter(res);
+            //缓存响应信息
+            _this.data.detailInfo = res
             //渲染页面
             detailHTML = _mm.renderHTML(templateHTML, res);
             $pageWrap.html(detailHTML);

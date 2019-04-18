@@ -130,3 +130,10 @@
     display: block;
     margin: 0 auto;
 }
+/* 错误信息 */
+.err-tips {
+    padding: 20px 0;
+    background: #eee; color: #f60;
+    font-size: 16px; font-weight: bold;
+    text-align: center;
+}

@@ -19,7 +19,74 @@
             </div>
         </div>
         <div class="page-wrap w">
-
+            <!-- <div class="err-tips">lhjll</div> -->
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">
+                            <label>
+                                <input type="checkbox" class="cart-select-all">
+                                <span>全选</span>
+                            </label>
+                        </th>
+                        <th scope="col">商品信息</th>
+                        <th scope="col">单价</th>
+                        <th scope="col">数量</th>
+                        <th scope="col">合计</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="space"><td colspan="7">1</td></tr>
+                    <tr>
+                        <td class="cell-checkbox">
+                            <input type="checkbox">
+                        </td>
+                        <td class="cell-img">
+                            <a href="./detail.html?productId=826" target="_blank">
+                                <img class="p-img" src="http://img.happymmall.com/570186f3-c0d2-4336-a1b7-3e1aff88f73a.jpg" alt="Apple iPhone X (A1865) 64GB 深空灰色 移动联通电信4G手机">
+                            </a>
+                        </td>
+                        <td class="cell-info">
+                            <a class="link" href="./detail.html?productId=826" target="_blank">
+                                <span>Apple iPhone X (A1865) 64GB 深空灰色 移动联通电信4G手机</span>
+                            </a>
+                        </td>
+                        <td class="cell-price">
+                            <span>￥8388</span>
+                        </td>
+                        <td class="cell-count">
+                            <span class="count-btn">-</span>
+                            <input class="count-input">
+                            <span class="count-btn">+</span>
+                        </td>
+                        <td class="cell-total">￥25164</td>
+                        <td class="cell-opera">
+                            <a class="link">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="space"><td colspan="7">1</td></tr>
+                    <tr class="cart-footer">
+                        <td colspan="4">
+                            <label>
+                                <input type="checkbox">
+                                <span>全选</span>
+                            </label>
+                            <a class="link">
+                                <i class="fa fa-trash-o"></i>
+                                <span>删除选中商品</span>
+                            </a>
+                        </td>
+                        <td colspan="3" class="submit-con">
+                            <span>总价：</span>
+                            <span class="submit-total">￥27963.1</span>
+                            <span class="btn submit-btn">去结算</span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
         <%= require('html-loader!./layout/footer.html')%>
     </body>

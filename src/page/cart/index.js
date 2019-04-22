@@ -11,7 +11,7 @@ var page = {
     },
     bindEvent : function () {},
     onload : function () {
-        $('.page-wrap').html('<div class="loading"></div>');
+        // $('.page-wrap').html('<div class="loading"></div>');
     }
 };
 

@@ -1,0 +1,124 @@
+.cart-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.cart-table thead {
+    background: #eee;
+    border: 1px solid #ebebeb;
+}
+.cart-table thead th {
+    padding: 10px 5px;
+
+}
+/* 分配每一列的宽度 */
+.cart-table thead th:nth-child(1) {
+    width: 15%;
+    text-align: left;
+    padding-left: 20px;
+}
+.cart-table thead th:nth-child(2) {
+    width: 35%;
+}
+.cart-table thead th:nth-child(3) {
+    width: 10%;
+}
+.cart-table thead th:nth-child(4) {
+    width: 20%;
+}
+.cart-table thead th:nth-child(5) {
+    width: 10%;
+}
+.cart-table thead th:nth-child(6) {
+    width: 10%;
+}
+
+/* 通过插入空行，模拟两行之间空一段距离 */
+.cart-table tbody tr {
+    border: 1px solid #ebebeb;
+}
+.cart-table tr.space {
+    visibility: hidden;
+}
+
+/* 每行各个单元格格式 */
+.cart-table tbody td.cell-checkbox {
+    width: 6%;
+    padding-left: 20px;
+}
+.cart-table tbody td.cell-img {
+    width: 9%;
+    padding: 10px;
+    text-align: center;
+}
+.cart-table tbody td .p-img {
+    display: inline-block;
+    width: 80px; height: 80px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.cart-table tbody td.cell-info {
+    padding: 0 10px;
+}
+.cart-table tbody td.cell-price {
+    text-align: center;
+}
+.cart-table tbody td.cell-count {
+    text-align: center;
+}
+.cart-table tbody td.cell-count .count-btn {
+    display: inline-block;
+    width: 20px; height: 28px; line-height: 28px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.cart-table tbody td.cell-count .count-input {
+    width: 60px; height: 28px; line-height: 28px;
+    border: 1px solid #ddd;
+    text-align: center;
+    outline: none;
+}
+.cart-table tbody td.cell-total {
+    text-align: center;
+    font-weight: bold;
+}
+.cart-table tbody td.cell-opera {
+    text-align: center;
+}
+
+/* tablefoot */
+.cart-table tfoot tr.cart-footer {
+    line-height: 50px;
+    background: #eee;
+}
+.cart-table tfoot tr.cart-footer label {
+    padding-left: 20px;
+}
+.cart-table tfoot tr.cart-footer a {
+    margin-left: 20px
+}
+.cart-table tfoot tr.cart-footer .submit-con {
+    text-align: right;
+}
+.cart-table tfoot tr.cart-footer .submit-total {
+    margin-right: 30px;
+    font-size: 18px; font-weight: bold;
+    color: #c60023;
+    vertical-align: middle;
+}
+.cart-table tfoot tr.cart-footer .submit-btn {
+    line-height: 50px;
+    height: 50px;
+}
+/* 错误信息 */
+.err-tips {
+    padding: 20px 0;
+    background: #eee; color: #f60;
+    font-size: 16px; font-weight: bold;
+    text-align: center;
+}

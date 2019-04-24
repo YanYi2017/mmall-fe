@@ -27,6 +27,44 @@ var _cart = {
             success : resolve,
             error   : reject
         });
+    },
+    //购物车中选中某个商品
+    selectProduct: function (productId, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/select.do'),
+            data    : {
+                productId : productId
+            },
+            success : resolve,
+            error   : reject
+        });
+    },
+    //购物车中取消选中某个商品
+    unselectProduct: function (productId, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/un_select.do'),
+            data    : {
+                productId : productId
+            },
+            success : resolve,
+            error   : reject
+        });
+    },
+    //全选
+    selectAllProduct: function (resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/select_all.do'),
+            success : resolve,
+            error   : reject
+        });
+    },
+    //取消全选
+    unselectAllProduct: function (resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/un_select_all.do'),
+            success : resolve,
+            error   : reject
+        });
     }
 };
 

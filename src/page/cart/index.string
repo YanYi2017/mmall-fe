@@ -20,16 +20,16 @@
                 <th scope="col">操作</th>
             </tr>
         </thead>
-        {{#cartProductVoList}}
-            <tbody>
+        <tbody>
+            {{#cartProductVoList}}
                 <tr class="space"><td colspan="7">1</td></tr>
                 <tr>
-                    <td class="cell-checkbox">
+                    <td class="cell-checkbox" data-product-id="{{productId}}">
                         {{#productChecked}}
-                        <input type="checkbox" checked>
+                        <input class="cart-select" type="checkbox" checked>
                         {{/productChecked}}
                         {{^productChecked}}
-                        <input type="checkbox">
+                        <input class="cart-select" type="checkbox">
                         {{/productChecked}}
                     </td>
                     <td class="cell-img">
@@ -55,18 +55,18 @@
                         <a class="link">删除</a>
                     </td>
                 </tr>
-            </tbody>
-        {{/cartProductVoList}}
+            {{/cartProductVoList}}
+        </tbody>
         <tfoot>
             <tr class="space"><td colspan="7">1</td></tr>
             <tr class="cart-footer">
                 <td colspan="4">
                     <label>
                         {{#allChecked}}
-                        <input type="checkbox" checked>
+                        <input type="checkbox" class="cart-select-all" checked>
                         {{/allChecked}}
                         {{^allChecked}}
-                        <input type="checkbox">
+                        <input type="checkbox" class="cart-select-all">
                         {{/allChecked}}
                         <span>全选</span>
                     </label>

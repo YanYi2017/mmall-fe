@@ -12,10 +12,10 @@ var _cart = {
         });
     },
     //向购物车中添加商品
-    addToCart: function (info, resolve, reject) {
+    addToCart: function (productInfo, resolve, reject) {
         _mm.request({
             url     : _mm.getServerURL('/cart/add.do'),
-            data    : info,
+            data    : productInfo,
             success : resolve,
             error   : reject
         });
@@ -62,6 +62,15 @@ var _cart = {
     unselectAllProduct: function (resolve, reject) {
         _mm.request({
             url     : _mm.getServerURL('/cart/un_select_all.do'),
+            success : resolve,
+            error   : reject
+        });
+    },
+    //更新购物车商品数量
+    update: function (productInfo, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/update.do'),
+            data    : productInfo,
             success : resolve,
             error   : reject
         });

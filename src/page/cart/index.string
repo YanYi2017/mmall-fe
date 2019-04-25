@@ -23,8 +23,8 @@
         <tbody>
             {{#cartProductVoList}}
                 <tr class="space"><td colspan="7">1</td></tr>
-                <tr>
-                    <td class="cell-checkbox" data-product-id="{{productId}}">
+                <tr data-product-id="{{productId}}">
+                    <td class="cell-checkbox">
                         {{#productChecked}}
                         <input class="cart-select" type="checkbox" checked>
                         {{/productChecked}}
@@ -46,9 +46,9 @@
                         <span>￥{{productPrice}}</span>
                     </td>
                     <td class="cell-count">
-                        <span class="count-btn">-</span>
+                        <span class="count-btn" data-opera-type="minus">-</span>
                         <input class="count-input" value="{{quantity}}" data-max="{{productStock}}">
-                        <span class="count-btn">+</span>
+                        <span class="count-btn" data-opera-type="plus">+</span>
                     </td>
                     <td class="cell-total">￥{{productTotalPrice}}</td>
                     <td class="cell-opera">

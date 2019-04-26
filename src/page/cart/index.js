@@ -1,12 +1,12 @@
 'use strict';
 
 require('./index.css');
-require('Page/common/nav/index.js');
 require('Page/common/header/index.js');
 
 var _cart           = require('Service/cart-service.js'),
     _mm             = require('Util/mm.js'),
-    templateHTML    = require('./index.string');
+    templateHTML    = require('./index.string'),
+    nav             = require('Page/common/nav/index.js');
 
 var page = {
     data : {
@@ -168,6 +168,14 @@ var page = {
                 }
             }
         });
+        //购物车提交
+        $(document).on('click', '.submit-btn', function () {
+            if (_this.data.cartInfo && _this.data.cartInfo.cartTotalPrice > 0) {
+                window.location.href = './order-confirm.html';
+            } else {
+                _mm.errorTips('请选择商品后提交');
+            }
+        });
         
     },
     onload : function () {
@@ -190,6 +198,8 @@ var page = {
         var cartHTML = '';
         cartHTML = _mm.renderHTML(templateHTML, data);
         $('.page-wrap').html(cartHTML);
+        //更新导航条中购物车商品数量
+        nav.loadCartCount();
     },
     //处理请求得到的数据
     filter: function (data) {

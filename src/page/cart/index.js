@@ -142,6 +142,33 @@ var page = {
                 _this.showCartError();
             });
         });
+
+        //删除单个商品
+        $(document).on('click', '.cart-delete', function () {
+            if (confirm('确认要删除当前商品？')) {
+                var productId = $(this).parents('tr').data('product-id');
+                _this.deleteCartProduct(productId);          
+            }
+        });
+        //删除选中的商品
+        $(document).on('click', '.cart-delete-selected', function () {            
+            if (confirm('确定要删除选中商品？')) {
+                var $checkedBox = $('tbody tr[data-product-id] input:checked'),
+                    productIdArray = [];
+
+                //循环查找选中商品的productId，并放到数组中
+                for (var i = 0; i < $checkedBox.length; i++) {
+                    productIdArray.push($($checkedBox[i]).parents('tr').data('product-id'));
+                }
+
+                if (productIdArray.length) {
+                    _this.deleteCartProduct(productIdArray.join(','));
+                } else {
+                    _mm.errorTips('请选择要删除的商品');
+                }
+            }
+        });
+        
     },
     onload : function () {
         var _this       = this,
@@ -171,6 +198,16 @@ var page = {
     //显示错误信息
     showCartError: function () {
         $('.page-wrap').html('<p class="err-tips">出问题了，刷新下试试吧。</p>');
+    },
+    //删除指定商品，支持批量删除，productId之间用逗号分隔
+    deleteCartProduct: function (productIds) {
+        var _this = this;
+
+        _cart.deleteProduct(productIds, function (res) {
+            _this.renderCartList(res);
+        }, function (errMsg) {
+            _this.showCartError();
+        });
     }
 };
 

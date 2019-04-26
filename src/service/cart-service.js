@@ -74,6 +74,17 @@ var _cart = {
             success : resolve,
             error   : reject
         });
+    },
+    //删除商品
+    deleteProduct: function (productIds, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/cart/delete_product.do'),
+            data    : {
+                productIds   : productIds
+            },
+            success : resolve,
+            error   : reject
+        });
     }
 };
 

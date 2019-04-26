@@ -52,7 +52,7 @@
                     </td>
                     <td class="cell-total">￥{{productTotalPrice}}</td>
                     <td class="cell-opera">
-                        <a class="link">删除</a>
+                        <a class="link cart-delete">删除</a>
                     </td>
                 </tr>
             {{/cartProductVoList}}
@@ -70,7 +70,7 @@
                         {{/allChecked}}
                         <span>全选</span>
                     </label>
-                    <a class="link">
+                    <a class="link cart-delete-selected">
                         <i class="fa fa-trash-o"></i>
                         <span>删除选中商品</span>
                     </a>
@@ -86,5 +86,8 @@
 {{/notEmpty}}
 
 {{^notEmpty}}
-    <div class="err-tips">购物车空空如也</div>
+    <p class="err-tips">
+        <span>您的购物车空空如也，</span>
+        <a href="./index.html">立即去购物吧</a>
+    </p>
 {{/notEmpty}}

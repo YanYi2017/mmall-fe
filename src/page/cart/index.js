@@ -65,37 +65,44 @@ var page = {
         });
 
         //通过输入框改变商品数量
-        // $(document).on('keyup', '.count-input', function (e) {
-        //     var count = Number($(this).val());
-        //     var inputRegExp = /[0-9]|Backspace|Delete|Left|Right|Up|Down/;
-        //     console.log(typeof e.key);
-        //     console.log(e.key);
-        //     console.log(inputRegExp.test(e.key));
-        //     //如果输入的不是数字，则通过preventDefault()阻止文字的输入
-        //     if (inputRegExp.test(e.key)) {
-        //         console.log('输入成功');
-        //         console.log(count);
-        //         if (count > 200) {
-        //             console.log('输入多了');
-        //         }
-        //     } else {
-        //         e.preventDefault();
-        //         console.log('输入失败');
-        //     }
-        //     // var $this = $(this),
-        //     //     count = $this.val(),
-        //     //     minCount = 1,
-        //     //     maxCount = $this.data('max');
-        //     // if (count < minCount) {
-        //     //     _mm.errorTips('商品数量不能为负');
-        //     //     count = minCount;
-        //     // }
-        //     // if (count > maxCount) {
-        //     //     _mm.errorTips('最多只能购买' + maxCount + '件商品');
-        //     //     count = maxCount;
-        //     // }
+        //判断输入是否有效，无效则阻止输入
+        $(document).on('keydown', '.count-input', function (e) {
+            var count        = Number($(this).val()),
+                inputRegExp  = /[0-9]|Backspace|Delete|Left|Right|Up|Down|Table/;
+            //如果输入的不是数字或方向键，则通过preventDefault()阻止输入
+            if (!inputRegExp.test(e.key)) {
+                e.preventDefault();
+            }
+        });
+        //判断最终输入框中的数字，并更新总价
+        $(document).on('blur', '.count-input', function (e) {
+            var $this       = $(this),
+                inputCount  = Number($this.val()),
+                productId   = $this.parents('tr').data('product-id'),
+                minCount    = 1,
+                maxCount    = Number($this.data('max')),
+                newCount    = 0;
 
-        // });
+            if (inputCount > maxCount) {
+                _mm.errorTips('库中该商品只有' + maxCount + '件了');
+                newCount    = maxCount;
+            }
+            else if (inputCount <= minCount) {
+                newCount    = minCount;
+            } else {
+                newCount    = inputCount;
+            }
+            
+            //更新购物车商品数量和价格
+            _cart.update({
+                productId   : productId,
+                count       : newCount
+            }, function (res) {
+                _this.renderCartList(res);
+            }, function (errMsg) {
+                _this.showCartError();
+            });
+        });
 
         //通过按钮改变商品数量
         $(document).on('click', '.count-btn', function () {
@@ -125,7 +132,7 @@ var page = {
                     return;
                 }
             }
-            //更新购物车商品数量
+            //更新购物车商品数量和价格
             _cart.update({
                 productId   : productId,
                 count       : newCount

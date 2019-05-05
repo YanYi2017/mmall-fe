@@ -22,7 +22,14 @@ var page = {
         this.loadAddressList();
         this.loadProductList();
     },
-    bindEvent : function () {},
+    bindEvent : function () {
+        var _this = this;
+        //选择地址
+        $(document).on('click', '.address-item', function () {
+            $(this).addClass('active').siblings('.address-item').removeClass('active');
+            _this.data.selectedAddressId = $(this).data('id');
+        });
+    },
     //加载地址清单
     loadAddressList : function () {
         _address.getAddressList(function (res) {

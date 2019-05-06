@@ -29,6 +29,26 @@ var page = {
             $(this).addClass('active').siblings('.address-item').removeClass('active');
             _this.data.selectedAddressId = $(this).data('id');
         });
+        //订单提交
+        $(document).on('click', '.order-submit', function () {
+            var shippingId = _this.data.selectedAddressId;
+
+            //判断是否选中地址
+            if (shippingId) {
+                console.log(true);
+                //提交订单
+                _order.createOrder({
+                    shippingId : shippingId
+                }, function (res) {
+                    window.location.href = './payment.html?orderNumber=' + res.orderNo;
+                }, function (errMsg) {
+                    _mm.errorTips(errMsg);
+                });
+            } else {
+                console.log(false);
+                _mm.errorTips('请选择收获地址后再提交');
+            }
+        });
     },
     //加载地址清单
     loadAddressList : function () {
@@ -47,7 +67,7 @@ var page = {
 
             $('.product-con').html(productListHTML);
         }, function (errMsg) {
-            console.log(errMsg);
+            $('.product-con').html('<p class="err-tip">' + errMsg + '</p>');
         });
     }
 };

@@ -9,6 +9,15 @@ var _order = {
             success : resolve,
             error   : reject
         });
+    },
+    //创建新订单
+    createOrder : function (shippingId, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/order/create.do'),
+            data    : shippingId,
+            success : resolve,
+            error   : reject
+        });
     }
 };
 

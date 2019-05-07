@@ -97,3 +97,61 @@
     height: 50px; line-height: 50px;
     text-align: center;
 }
+/* 模态对话框部分 */
+.modal {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: #eee;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    overflow-x: hidden; overflow-y: auto;
+}
+.modal .modal-container {
+    margin: 50px auto;
+    width: 700px;
+    background: #fff;
+    border-radius: 4px;
+}
+.modal .modal-container .modal-header {
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.modal .modal-container .modal-header > * {
+    font-size: 15px;
+}
+.modal .modal-container .modal-header .close {
+    position: absolute;
+    top: 10px; right: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.modal .modal-container .modal-body {
+    padding: 15px;
+}
+/* form部分 */
+.form .form-line {
+    overflow: hidden;
+    margin: 5px 0;
+}
+.form .form-line .label {
+    display: block;
+    float: left;
+    text-align: right;
+    width: 80px; height: 30px; line-height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.form .form-line .label .required {
+    color: red;
+}
+.form .form-line .form-item  {
+    padding: 0 5px;
+    margin-right: 10px;
+    height: 30px; line-height: 30px;
+    outline: none
+}
+.form .form-line .btn  {
+    margin-left: 90px;
+    font-size: 15px;
+}

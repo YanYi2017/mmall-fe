@@ -7,8 +7,10 @@ require('Page/common/nav/index.js');
 var _order              = require('Service/order-service.js'),
     _address            = require('Service/address-service.js'),
     _mm                 = require('Util/mm.js'),
+    _addressModal        = require('./address-modal.js'),
     addressTemplate     = require('./address-list.string'),
-    productTemplate     = require('./product-list.string');
+    productTemplate     = require('./product-list.string'),
+    modalTemplate       = require('./address-modal.string');
 
 var page = {
     data : {
@@ -48,6 +50,15 @@ var page = {
                 console.log(false);
                 _mm.errorTips('请选择收获地址后再提交');
             }
+        });
+        //点击添加新地址
+        $(document).on('click', '.address-new', function () {
+            _addressModal.show({
+                isUpdate    : false,
+                onSuccess   : function () {
+                    _this.loadAddressList();
+                }
+            });
         });
     },
     //加载地址清单

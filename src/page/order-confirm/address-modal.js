@@ -56,6 +56,14 @@ var _addressModal = {
             }
 
         });
+        //点击叉号或蒙版区域时，关闭模态对话框
+        this.$modalWrap.find('.close').click(function () {
+            _this.hide();
+        });
+        //保证点击modal内容区时，不关闭弹窗
+        this.$modalWrap.find('.modal-container').click(function (e) {
+            e.stopPropagation();
+        });
        
     },
     //关闭模态对话框

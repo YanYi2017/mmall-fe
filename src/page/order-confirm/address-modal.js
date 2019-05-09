@@ -8,6 +8,7 @@ var addressModalTemplate    = require('./address-modal.string');
 var _addressModal = {
     option : {
         isUpdate    : null,
+        data        : null,
         onSuccess   : null
     },
     show : function (option) {
@@ -21,8 +22,12 @@ var _addressModal = {
     },
     //加载模态对话框
     loadModal : function () {
-        var addressModalHTML = _mm.renderHTML(addressModalTemplate, this.option.data);
+        var addressModalHTML = _mm.renderHTML(addressModalTemplate, {
+            isUpdate : this.option.isUpdate,
+            data     : this.option.data
+        });
         this.$modalWrap.html(addressModalHTML);
+
         //加载省份
         this.loadProvinces();
     },
@@ -42,13 +47,23 @@ var _addressModal = {
 
             //使用新地址，且验证通过
             if (!isUpdate && receiverInfo.status) {
-                _address.addReceiver(receiverInfo.data, function (res) {
+                _address.addAddress(receiverInfo.data, function (res) {
                     _mm.successTips('地址添加成功');
                     _this.hide();
                     typeof _this.option.onSuccess === 'function' && _this.option.onSuccess();
                 }, function (errMsg) {
-                    _mm.errorTips(receiverInfo.data.errMsg);
+                    _mm.errorTips(errMsg);
                 });
+            }
+            //更新地址，且验证通过
+            else if (isUpdate && receiverInfo.status) {
+              _address.updateAddress(receiverInfo.data, function (res) {
+                  _mm.successTips('地址修改成功');
+                  _this.hide();
+                  typeof _this.option.onSuccess === 'function' && _this.option.onSuccess();
+              }, function (errMsg) {
+                  _mm.errorTips(errMsg);
+              });  
             }
             //未通过验证
             else {
@@ -73,16 +88,27 @@ var _addressModal = {
     //加载省份信息
     loadProvinces : function () {
         var provinces           = _cities.getProvinces() || [];
-        var $provinceSelect     = this.$modalWrap.find('#receiver-province');
+        var $province     = this.$modalWrap.find('#receiver-province');
         
-        $provinceSelect.html(this.getSelectOptions(provinces));
+        $province.html(this.getSelectOptions(provinces));
+
+        //如果是更新地址，并且有省份信息，回填省份
+        if (this.option.isUpdate && this.option.data.receiverProvince) {
+            $province.val(this.option.data.receiverProvince);
+            this.loadCities(this.option.data.receiverProvince);
+        }
     },
     //加载城市信息
     loadCities : function (province) {
         var cities          = _cities.getCities(province) || [];
-        var $citySelect     = this.$modalWrap.find('#receiver-city');
+        var $city     = this.$modalWrap.find('#receiver-city');
 
-        $citySelect.html(this.getSelectOptions(cities));
+        $city.html(this.getSelectOptions(cities));
+
+        //如果是更新地址，并且有城市信息，回填城市
+        if (this.option.isUpdate && this.option.data.receiverCity) {
+            $city.val(this.option.data.receiverCity);
+        }
     },
     //传入数组，获取相应option标签HTML代码片段
     getSelectOptions : function (optionArray) {
@@ -109,6 +135,10 @@ var _addressModal = {
         receiverInfo.receiverPhone      = $.trim(this.$modalWrap.find('#receiver-phone').val());
         receiverInfo.receiverZip        = $.trim(this.$modalWrap.find('#receiver-zip').val());
     
+        if (this.option.isUpdate) {
+            receiverInfo.id = $.trim(this.$modalWrap.find('#receiver-id').val());
+        }
+
         //表单验证
         if (!receiverInfo.receiverName) {
             result.errMsg = '请输入收件人姓名';

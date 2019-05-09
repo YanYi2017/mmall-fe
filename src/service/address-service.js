@@ -15,14 +15,35 @@ var _address = {
         });
     },
     //添加新地址
-    addReceiver : function (receiverInfo, resolve, reject) {
+    addAddress : function (receiverInfo, resolve, reject) {
         _mm.request({
             url     : _mm.getServerURL('/shipping/add.do'),
             data    : receiverInfo,
             success : resolve,
             error   : reject
         });
+    },
+    //获取收件人地址信息
+    getAddress : function (shippingId, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/shipping/select.do'),
+            data    : {
+                shippingId : shippingId
+            },
+            success : resolve,
+            error   : reject
+        });
+    },
+    //更新收件人地址信息
+    updateAddress : function (receiverInfo, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/shipping/update.do'),
+            data    : receiverInfo,
+            success : resolve,
+            error   : reject
+        });
     }
+
 };
 
 module.exports = _address;

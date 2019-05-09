@@ -1,7 +1,12 @@
 <div class="modal close">
     <div class="modal-container">
         <div class="modal-header">
+            {{#isUpdate}}
+            <h1>更新地址</h1>
+            {{/isUpdate}}
+            {{^isUpdate}}
             <h1>使用新地址</h1>
+            {{/isUpdate}}
             <i class="fa fa-close close"></i>
         </div>
         <div class="modal-body">
@@ -10,7 +15,7 @@
                     <label for="receiver-name" class="label">
                         <span class="required">*</span>收件人姓名：
                     </label>
-                    <input class="form-item" id="receiver-name" placeholder="请输入收件人姓名">
+                    <input class="form-item" id="receiver-name" placeholder="请输入收件人姓名" value="{{data.receiverName}}">
                 </div>
                 <div class="form-line">
                     <label for="receiver-province" class="label">
@@ -27,21 +32,22 @@
                     <label for="receiver-address" class="label">
                         <span class="required">*</span>详细地址：
                     </label>
-                    <input class="form-item" id="receiver-address" placeholder="请输入详细地址">
+                    <input class="form-item" id="receiver-address" placeholder="请输入详细地址" value="{{data.receiverAddress}}">
                 </div>
                 <div class="form-line">
                     <label for="receiver-phone" class="label">
                         <span class="required">*</span>收件人手机：
                     </label>
-                    <input class="form-item" id="receiver-phone" placeholder="请输入收件人手机号">
+                    <input class="form-item" id="receiver-phone" placeholder="请输入收件人手机号" value="{{data.receiverPhone}}">
                 </div>
                 <div class="form-line">
                     <label for="receiver-zip" class="label">
                         邮政编码：
                     </label>
-                    <input class="form-item" id="receiver-zip" placeholder="请输入邮政编码">
+                    <input class="form-item" id="receiver-zip" placeholder="请输入邮政编码" value="{{data.receiverZip}}">
                 </div>
                 <div class="form-line">
+                    <input type="hidden" id="receiver-id" value="{{data.id}}">
                     <a class="btn address-btn">保存收货地址</a>
                 </div>
             </div>

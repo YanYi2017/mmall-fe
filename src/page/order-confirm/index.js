@@ -51,13 +51,31 @@ var page = {
                 _mm.errorTips('请选择收货地址后再提交');
             }
         });
-        //点击添加新地址
+        //添加新的收件人地址
         $(document).on('click', '.address-new', function () {
             _addressModal.show({
                 isUpdate    : false,
                 onSuccess   : function () {
                     _this.loadAddressList();
                 }
+            });
+        });
+        //编辑收件人地址
+        $(document).on('click', '.address-update', function (e) {
+            //阻止事件传播，防止触发选中地址功能
+            e.stopPropagation();
+            var shippingId = $(this).parents('.address-item').data('id');
+            
+            _address.getAddress(shippingId, function (res) {
+                _addressModal.show({
+                    isUpdate    : true,
+                    data        : res,
+                    onSuccess   : function () {
+                        _this.loadAddressList();
+                    }
+                });
+            }, function (errMsg) {
+                _mm.errorTips(errMsg);
             });
         });
     },

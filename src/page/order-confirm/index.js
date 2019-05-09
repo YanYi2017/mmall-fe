@@ -48,7 +48,7 @@ var page = {
                 });
             } else {
                 console.log(false);
-                _mm.errorTips('请选择收获地址后再提交');
+                _mm.errorTips('请选择收货地址后再提交');
             }
         });
         //点击添加新地址

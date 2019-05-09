@@ -42,7 +42,7 @@
                     <input class="form-item" id="receiver-zip" placeholder="请输入邮政编码">
                 </div>
                 <div class="form-line">
-                    <a class="btn address-btn">保存收获地址</a>
+                    <a class="btn address-btn">保存收货地址</a>
                 </div>
             </div>
         </div>

@@ -13,6 +13,15 @@ var _address = {
             success : resolve,
             error   : reject
         });
+    },
+    //添加新地址
+    addReceiver : function (receiverInfo, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/shipping/add.do'),
+            data    : receiverInfo,
+            success : resolve,
+            error   : reject
+        });
     }
 };
 

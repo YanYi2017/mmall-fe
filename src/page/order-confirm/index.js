@@ -78,6 +78,20 @@ var page = {
                 _mm.errorTips(errMsg);
             });
         });
+        //删除收件人地址
+        $(document).on('click', '.address-delete', function (e) {
+            //阻止事件传播，防止触发选中地址功能
+            e.stopPropagation();
+            var shippingId = $(this).parents('.address-item').data('id');
+            
+            if (window.confirm('确定要删除该地址？')) {
+                _address.deleteAddress(shippingId, function (res) {
+                    _this.loadAddressList();
+                }, function (errMsg) {
+                    _mm.errorTips(errMsg);
+                });
+            }
+        });
     },
     //加载地址清单
     loadAddressList : function () {

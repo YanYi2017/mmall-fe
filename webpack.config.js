@@ -40,7 +40,13 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist'
+        contentBase: './dist',
+        proxy: {
+            '**/*.do': {
+                target: 'http://test.happymmall.com',
+                changeOrigin: true
+            }
+        }
     },
     plugins: [
         //单独打包CSS文件

@@ -42,7 +42,18 @@ var _address = {
             success : resolve,
             error   : reject
         });
-    }
+    },
+    //删除收件人地址
+    deleteAddress : function (shippingId, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/shipping/del.do'),
+            data    : {
+                shippingId : shippingId
+            },
+            success : resolve,
+            error   : reject
+        });
+    },
 
 };
 

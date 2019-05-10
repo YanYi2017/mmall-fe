@@ -19,18 +19,6 @@ var page = {
         navSide.init({
             name : 'order-list'
         });
-        //加载用户信息
-        this.loadUserInfo();
-    },
-    //加载用户信息
-    loadUserInfo : function () {
-        var userHTML = '';
-        _user.getUserInfo(function (res) {
-            userHTML = _mm.renderHTML(htmlTemplate, res);
-            $('.panel-body').html(userHTML);
-        }, function (errMsg) {
-            _mm.errorTips(errMsg);
-        });
     }
 };
 

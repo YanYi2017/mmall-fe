@@ -95,16 +95,35 @@ var page = {
     },
     //加载地址清单
     loadAddressList : function () {
+        var _this = this;
+        $('.address-con').html('<div class="loading"></div>');
+        
+        //获取地址列表
         _address.getAddressList(function (res) {
+            //处理地址列表选中状态
+            if (_this.data.selectedAddressId) {
+                _this.addressFilter(res);
+            }
+            
             var addressListHTML = _mm.renderHTML(addressTemplate, res);
-
             $('.address-con').html(addressListHTML);
         }, function (errMsg) {
             $('.address-con').html('<p class="err-tip">地址加载失败，请刷新后重试</p>');
         });
     },
+    //处理地址列表选中状态
+    addressFilter : function (data) {
+        for (var i = 0, length = data.list.length; i < length; i++) {
+            if (data.list[i].id === this.data.selectedAddressId) {
+                data.list[i].isActive = true;
+            }
+        }
+    },
     //加载产品清单
     loadProductList : function () {
+        $('.product-con').html('<div class="loading"></div>');
+
+        //获取商品列表
         _order.getProductList(function (res) {
             var productListHTML = _mm.renderHTML(productTemplate, res);
 

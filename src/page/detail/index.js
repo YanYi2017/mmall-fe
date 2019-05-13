@@ -11,7 +11,7 @@ var _mm = require('Util/mm.js'),
 
 var page = {
     data : {
-        productID : _mm.getURLParam('productID') || ''
+        productId : _mm.getURLParam('productId') || ''
     },
     init : function () {
         this.onload();
@@ -46,7 +46,7 @@ var page = {
         //加入购物车
         $(document).on('click', '.cart-add', function () {
             _cart.addToCart({
-                productId : _this.data.productID,
+                productId : _this.data.productId,
                 count     : $('.p-count').val()
             }, function (res) {
                 window.location.href = './result.html?type=cart-add';
@@ -56,8 +56,8 @@ var page = {
         });
     },
     onload : function () {
-        //若productID不存在，则回到主页
-        if (!this.data.productID) {
+        //若productId不存在，则回到主页
+        if (!this.data.productId) {
             _mm.goHome();
         }
         this.loadDetail();
@@ -70,7 +70,7 @@ var page = {
         //显示loading图标
         $pageWrap.html('<div class="loading"></div>');
         // 请求商品详细数据
-        _product.getProductDetail(_this.data.productID, function (res) {
+        _product.getProductDetail(_this.data.productId, function (res) {
             //修改数据类型
             _this.filter(res);
             //缓存响应信息

@@ -1,0 +1,61 @@
+.order-info .text-line {
+    height: 30px;
+    line-height: 30px;
+}
+.order-info .text-line .text {
+    margin-right: 30px;
+}
+.order-info .btn {
+    width: 80px; height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.product-table {
+    border-collapse: collapse;
+}
+.product-table .cell-th {
+    background: #eee;
+}
+.product-table .cell-img {
+    width: 10%;
+    padding: 10px;
+    text-align: center;
+}
+.product-table .cell-img .p-img {
+    width: 80px; height: 80px;
+    border: 1px solid #ddd;
+}
+.product-table .cell-info {
+    width: 45%;
+    text-align: left;
+}
+.product-table .cell-price {
+    width: 15%;
+    text-align: center;
+}
+.product-table .cell-count {
+    width: 15%;
+    text-align: center;
+}
+.product-table .cell-total {
+    width: 15%;
+    text-align: center;
+}
+.product-table .cell {
+    background: #fafafa;
+    border-bottom: 1px dashed #eee;
+}
+.total {
+    text-align: right;
+    margin: 10px 20px 0 0;
+    height: 40px; line-height: 40px;
+    font-size: 14px;
+}
+.total .total-price {
+    font-weight: bold;
+    color: #c60023;
+}

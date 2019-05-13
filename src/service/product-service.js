@@ -13,11 +13,11 @@ var _product = {
         });
     },
     //获取产品详细信息
-    getProductDetail : function (productID, resolve, reject) {
+    getProductDetail : function (productId, resolve, reject) {
         _mm.request({
             url         : _mm.getServerURL('/product/detail.do'),
             data        : {
-                productId : productID
+                productId : productId
             },
             success     : resolve,
             error       : reject

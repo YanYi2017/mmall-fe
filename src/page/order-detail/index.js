@@ -26,7 +26,18 @@ var page = {
         this.loadOrderDetail();
     },
     bindEvent : function () {
-
+        var _this = this;
+        //取消订单
+        $(document).on('click', '.order-cancel', function () {
+            if (window.confirm('确定要取消该订单？')) {
+                _order.cancelOrder(_this.data.orderNum, function (res) {
+                    _mm.successTips('成功取消该订单');
+                    _this.loadOrderDetail();
+                }, function (errMsg) {
+                    _mm.errMsg(errMsg);
+                });
+            }
+        });
     },
     //加载订单详情
     loadOrderDetail : function () {

@@ -27,6 +27,17 @@ var _order = {
             success : resolve,
             error   : reject
         });
+    },
+    //获取订单详情
+    getOrderDetail : function (orderNum, resolve, reject) {
+        _mm.request({
+            url     : _mm.getServerURL('/order/detail.do'),
+            data    : {
+                orderNo : orderNum
+            },
+            success : resolve,
+            error   : reject
+        });
     }
 };
 

@@ -5,7 +5,9 @@ require('Page/common/nav/index.js');
 require('Page/common/header/index.js');
 
 var _mm = require('Util/mm.js');
+var _order = require('Service/order-service.js');
 var navSide = require('Page/common/nav-side/index.js');
+var htmlTemplate = require('./index.string');
 
 var page = {
     data : {
@@ -28,7 +30,24 @@ var page = {
     },
     //加载订单详情
     loadOrderDetail : function () {
+        var _this = this;
+        var $content = $('.content');
+        var orderDetailHTML = '';
 
+        $content.html('<div class="loading"></div>');
+        _order.getOrderDetail(this.data.orderNum, function (res) {
+            //处理数据，添加needPay和isCancelable属性
+            _this.filterData(res);
+            orderDetailHTML = _mm.renderHTML(htmlTemplate, res);
+            $content.html(orderDetailHTML);
+        }, function (errMsg) {
+            $content.html('<div class="err-tips">' + errMsg +'</div>');
+        });
+    },
+    //处理数据
+    filterData : function (data) {
+        data.needPay        = data.status === 10;
+        data.isCancelable   = data.status === 10;
     }
 };
 

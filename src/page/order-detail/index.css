@@ -1,3 +1,4 @@
+/* 订单信息 */
 .order-info .text-line {
     height: 30px;
     line-height: 30px;
@@ -13,7 +14,7 @@
     padding: 0;
     margin-right: 10px;
 }
-
+/* 商品清单 */
 .product-table {
     border-collapse: collapse;
 }
@@ -49,6 +50,7 @@
     background: #fafafa;
     border-bottom: 1px dashed #eee;
 }
+/* 总价 */
 .total {
     text-align: right;
     margin: 10px 20px 0 0;

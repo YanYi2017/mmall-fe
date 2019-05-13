@@ -8,6 +8,7 @@ var _mm = require('Util/mm.js');
 var _order = require('Service/order-service.js');
 var navSide = require('Page/common/nav-side/index.js');
 var htmlTemplate = require('./index.string');
+var Pagination = require('Util/pagination/index.js');
 
 //页面逻辑
 var page = {
@@ -36,12 +37,31 @@ var page = {
 
         $listCon.html('<div class="loading"></div>');
         _order.getOrderList(_this.data.listParam, function (res) {
-            console.log(res);
             orderListHTML = _mm.renderHTML(htmlTemplate, res);
             $listCon.html(orderListHTML);
+            _this.loadPagination({
+                hasPreviousPage : res.hasPreviousPage,
+                prePage         : res.prePage,
+                hasNextPage     : res.hasNextPage,
+                nextPage        : res.nextPage,
+                pageNum         : res.pageNum,
+                pages           : res.pages
+            });
         }, function (errMsg) {
             $listCon.html('<p class="err-tips">加载订单失败，请刷新后重试</p>');
         });
+    },
+    //加载分页信息
+    loadPagination : function (pageInfo) {
+        var _this = this;
+        this.pagination ? '' : (this.pagination = new Pagination());
+        this.pagination.render($.extend({}, pageInfo, {
+            container : $('.pagination'),
+            onSelectPage : function(pageNum){
+                _this.data.listParam.pageNum = pageNum;
+                _this.loadOrderList();
+            }
+        }));
     }
 };
 

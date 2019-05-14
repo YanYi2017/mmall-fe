@@ -17,15 +17,30 @@ var page = {
         this.onload();
     },
     onload: function () {
+        var _this = this;
         var $pageWrap = $('.page-wrap');
         var paymentHTML = '';
         
         _payment.getPaymentInfo(this.data.orderNumber, function (res) {
+            //渲染页面
             paymentHTML = _mm.renderHTML(htmlTemplate, res);
             $pageWrap.html(paymentHTML);
+            //监听订单状态
+            _this.listenOrderStatus();
         }, function (errMsg) {
             $pageWrap.html('<p class="err-tips">' + errMsg + '</p>');
         });
+    },
+    //监听订单状态
+    listenOrderStatus : function () {
+        var _this = this;
+        this.paymentTimer = window.setInterval(function () {
+            _payment.getPaymentStatus(_this.data.orderNumber, function (res) {
+                if (res === true) {
+                    window.location.href = './result.html?type=payment&orderNumber=' + _this.data.orderNumber;
+                }
+            });
+        }, 5e3);
     }
 };
 

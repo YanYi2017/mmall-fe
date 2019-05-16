@@ -1,3 +1,5 @@
+// 环境变量配置，dev / online
+var WEBPACK_ENV             = process.env.WEBPACK_ENV || 'dev';
 const path                  = require('path');
 const MiniCssExtractPlugin  = require('mini-css-extract-plugin');   //获取CSS单独打包插件
 const HTMLWebpackPlugin     = require('html-webpack-plugin');       //获取自动创建HTML页面插件
@@ -8,6 +10,7 @@ const getHtmlConfig = function (name, _title) {
         title       : _title,
         template    : './src/view/' + name + '.html',
         filename    : 'view/' + name + '.html',
+        favicon     : './favicon.ico',
         inject      : true,
         hash        : true,
         chunks      : ['base', 'common', name]
@@ -32,7 +35,8 @@ module.exports = {
         'user-center'           : './src/page/user-center/index.js',
         'user-center-update'    : './src/page/user-center-update/index.js',
         'user-password-update'  : './src/page/user-password-update/index.js',
-        'result'                : './src/page/result/index.js'
+        'result'                : './src/page/result/index.js',
+        'about'                 : './src/page/about/index.js'
     },
     optimization: {
         //分离共同模块
@@ -72,7 +76,8 @@ module.exports = {
         new HTMLWebpackPlugin(getHtmlConfig('user-center', '用户个人中心')),
         new HTMLWebpackPlugin(getHtmlConfig('user-center-update', '修改用户个人信息')),
         new HTMLWebpackPlugin(getHtmlConfig('user-password-update', '修改密码')),
-        new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页'))
+        new HTMLWebpackPlugin(getHtmlConfig('result', '结果提示页')),
+        new HTMLWebpackPlugin(getHtmlConfig('about', '关于MMall'))
     ],
     module: {
         rules: [
@@ -125,6 +130,6 @@ module.exports = {
     output: {
         filename    : 'js/[name].js',
         path        : path.resolve(__dirname, 'dist'),
-        publicPath  : '/'
+        publicPath  : 'dev' === WEBPACK_ENV ? '/dist/' : '//s.happymmall.com/mmall-fe/dist/'
     }
 };

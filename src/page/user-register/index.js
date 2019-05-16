@@ -70,7 +70,7 @@ var page = {
                 window.location.href = './result.html?type=register';
             }, function (errMsg) {
                 //注册失败后进行错误提示
-                formError.show(validateResult.msg);
+                formError.show(errMsg);
             });
         }
         //如果验证不成功

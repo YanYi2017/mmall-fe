@@ -1,8 +1,8 @@
 'use strict';
 
 require('./index.css');
-require('Page/common/header/index.js');
 require('Page/common/nav/index.js');
+require('Page/common/header/index.js');
 
 var _order              = require('Service/order-service.js'),
     _address            = require('Service/address-service.js'),

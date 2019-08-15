@@ -1,5 +1,5 @@
 'use strict';
-var Hogan = require('hogan');
+var Hogan = require('hogan.js');
 
 var config = {
     serverHost: ''  //方便以后改写服务器地址

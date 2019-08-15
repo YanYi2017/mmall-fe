@@ -4,7 +4,8 @@
   "description": "电商前端项目",
   "private": true,
   "scripts": {
-    "build": "set WEBPACK_ENV=online && webpack",
+    "build": "webpack",
+    "buildOL": "set WEBPACK_ENV=online && webpack",
     "start": "webpack-dev-server"
   },
   "repository": {

@@ -47,7 +47,8 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
+        contentBase: '/dist/view',
+        open: true,
         proxy: {
             '**/*.do': {
                 target: 'http://test.happymmall.com',
